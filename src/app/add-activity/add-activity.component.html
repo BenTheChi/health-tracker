@@ -1,0 +1,64 @@
+<h1 class="text-center mt-4 mb-3 py-3" style="border:1px solid #333; background-color: #eba3ff">Add Activity</h1>
+
+<div class="container my-4 p-4 border rounded border-secondary" style="background-color: white" *ngIf="!successScreenVisible">
+  <div class="row mb-3">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control border-secondary" id="name" placeholder="Enter name of activity" [ngClass]="{'border-danger': 
+        !hasName}" (change)="checkValidInput($event)" #nameInput>
+      </div>
+      <div class="form-group">
+        <label for="value">Value</label>
+        <input class="custom-range" min="1" max="100" step="1" type="range" id="value" (input)="onInput()" (mousedown)="onInput()" (mouseup)="onMouseUp()" #valueInput>
+        <div class="row">
+          <span class="col-4">0</span>
+          <span class="text-center col-4" [innerText]="'current value='+value" [ngStyle]="{visibility: valueVisible ? 'visible' : 'hidden'}"></span>
+          <span class="text-right col-4">100</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="type">
+          Type
+        </label>
+        <select name="types" id="type" class="form-control border-secondary" #typeInput>
+          <option value="physical">Physical</option>
+          <option value="mental">Mental</option>
+          <option value="emotional">Emotional</option>
+          <option value="spiritual">Spiritual</option>
+          <option value="social">Social</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control border-secondary" id="description" rows="10" [ngClass]="{'border-danger': 
+        !hasDescription}" (change)="checkValidInput($event)" #descriptionInput></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5"></div>
+    <div class="col-2">
+      <button class="btn btn-primary btn-block border border-secondary" type="button" (click)="addActivity(nameInput, valueInput, typeInput, descriptionInput)">Submit</button>
+    </div>
+    <div class="col-5"></div>
+  </div>
+</div>
+
+<div class="container mt-4 bg-white border rounded border-secondary" *ngIf="successScreenVisible" #successScreen>
+  <h1 class="text-center my-4 display-4">{{ currentName }} added to <br>{{ currentType }} activities</h1>
+
+  <div class="row p-4">
+    <div class="col-4 px-4">
+        <button routerLink="/add-activity" class="btn btn-primary btn-block border border-secondary" type="button" (click)="addActivityScreen()">Add Activity</button>
+    </div>
+    <div class="col-4 px-4">
+        <button routerLink="/" class="btn btn-primary btn-block border border-secondary" type="button" (click)="addActivityScreen()">Home</button>
+    </div>
+    <div class="col-4 px-4">
+        <button routerLink="/{{ currentType }}" class="btn btn-primary btn-block border border-secondary" type="button" (click)="addActivityScreen()">See Added Activity</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="background">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body class="border rounded border-secondary">
+  <nav class="navbar navbar-expand-sm d-flex flex-row row-hl">
+    <h1 class="font-weight-bold float-left pl-5">Health Tracker</h1>
+    <div class="container">
+
+        <!-- The navbar which highlights when on a routed page of the same name -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-2">
+                <a routerLink="/" class="nav-link pt-3" [ngStyle]="{'background-color': this.router.url == '/' ? 'lightblue' : transparent}">Home</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a routerLink="/physical" class="nav-link pt-3" [ngStyle]="{'background-color': this.router.url == '/physical' ? 'lightblue' : transparent}">Physical</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a routerLink="/mental" class="nav-link pt-3" [ngStyle]="{'background-color': this.router.url == '/mental' ? 'lightblue' : transparent}">Mental</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a routerLink="/emotional" class="nav-link pt-3" [ngStyle]="{'background-color': this.router.url == '/emotional' ? 'lightblue' : transparent}">Emotional</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a routerLink="/spiritual" class="nav-link pt-3" [ngStyle]="{'background-color': this.router.url == '/spiritual' ? 'lightblue' : transparent}">Spiritual</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a routerLink="/social" class="nav-link pt-3" [ngStyle]="{'background-color': this.router.url == '/social' ? 'lightblue' : transparent}">Social</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a routerLink="/add-activity" class="nav-link pt-3" [ngStyle]="{'background-color': this.router.url == '/add-activity' ? 'lightblue' : transparent}">Add Activity</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>
+  
+  <footer class="p-4">
+    <i>Ben Chi - 2019 - benthechi@gmail.com - https://github.com/BenTheChi</i>
+  </footer>
+</body>
+</html>

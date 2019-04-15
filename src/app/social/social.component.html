@@ -1,0 +1,9 @@
+<h1 class="text-center mt-4 mb-3 py-3" style="border:1px solid #333; background-color: #5fef94">Social Health</h1>
+<app-activity-menu
+[alphabeticalActivities]="alphabeticalActivities"
+[valueActivities]="valueActivities"
+[completedActivities]="completedActivities"
+(onActivityDeleted)="onActivityDeleted($event)"
+(onActivityCompleted)="onActivityCompleted($event)"
+(onActivityIncompleted)="onActivityIncompleted($event)">
+</app-activity-menu>

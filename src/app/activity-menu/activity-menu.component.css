@@ -1,0 +1,14 @@
+span.nav-link {
+    color: lightblue;
+    cursor: pointer;
+}
+
+.nav-tabs > li > span.active {
+    color: blue;
+    font-size: 1.4em;
+}
+
+
+button {
+    border: 1px solid black;
+}

@@ -1,0 +1,78 @@
+<!-- The menu that is used on each activity page. Displays a list of the completed and incompleted activities with options to complete, incomplete, and delete.  -->
+<div class="container p-3">
+  <div class="card border rounded border-secondary">
+      <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+              <li class="nav-item font-weight-bold">
+                  <span class="nav-link" [ngClass]="{active: openTab == 0}" (click)="onTabSelect(0)">A-Z</span>
+              </li>
+              <li class="nav-item font-weight-bold">
+                  <span class="nav-link" [ngClass]="{active: openTab == 1}" (click)="onTabSelect(1)">Value</span>
+              </li>
+              <li class="nav-item font-weight-bold">
+                  <span class="nav-link" [ngClass]="{active: openTab == 2}" (click)="onTabSelect(2)">Completed</span>
+              </li>
+          </ul>
+      </div>
+      <div class="card-body">
+          <div [ngSwitch]="openTab">
+            <div *ngSwitchDefault>
+                <div class="my-2 border rounded border-secondary" *ngFor="let activity of alphabeticalActivities" style="border:1px solid #333">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4 text-center">
+                                <div class="text-left">
+                                    <div class="mt-2"><span class="font-weight-bold">Name: </span> {{ activity.name }}</div>
+                                    <div class=""><span class="font-weight-bold">Value: </span> {{ activity.value }}</div>
+                                    <div class=""><span class="font-weight-bold">Description: </span> {{ activity.description }}</div>
+                                </div>
+                                <button class="ml-4 btn action-btn m-2 btn-success" (click)="activityCompleted(activity)">Complete</button>
+                                <button class="btn action-btn m-2 btn-danger" (click)="activityDeleted(activity, false)">Delete</button>
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="1">
+                    <div class="my-2 border rounded border-secondary" *ngFor="let activity of valueActivities" style="border:1px solid #333">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4"></div>
+                                    <div class="col-4 text-center">
+                                        <div class="text-left">
+                                            <div class="mt-2"><span class="font-weight-bold">Name: </span> {{ activity.name }}</div>
+                                            <div class=""><span class="font-weight-bold">Value: </span> {{ activity.value }}</div>
+                                            <div class=""><span class="font-weight-bold">Description: </span> {{ activity.description }}</div>
+                                        </div>
+                                        <button class="ml-4 btn action-btn m-2 btn-success complete" (click)="activityCompleted(activity)">Complete</button>
+                                        <button class="btn action-btn m-2 btn-danger delete" (click)="activityDeleted(activity, false)">Delete</button>
+                                    </div>
+                                    <div class="col-4"></div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <div *ngSwitchCase="2">
+                <div class="my-2 border rounded border-secondary" *ngFor="let activity of completedActivities" style="border:1px solid #333">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4 text-center">
+                                <div class="text-left">
+                                    <div class="mt-2"><span class="font-weight-bold">Name: </span> {{ activity.name }}</div>
+                                    <div class=""><span class="font-weight-bold">Value: </span> {{ activity.value }}</div>
+                                    <div class=""><span class="font-weight-bold">Description: </span> {{ activity.description }}</div>
+                                </div>
+                                    <button class="ml-4 btn action-btn m-2 btn-warning incomplete" (click)="activityIncompleted(activity)">Incomplete</button>
+                                    <button class="btn action-btn m-2 btn-danger delete" (click)="activityDeleted(activity, true)">Delete</button>
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<h1 class="text-center mt-4 mb-3 py-3" style="border:1px solid #333; background-color: #ff5959">Your Overall Health</h1>
+<div class="container mt-4 mb-4">
+  <div class="row" style="background-color: white">
+    <div class="col-6 text-center p-4 border rounded border-secondary">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-9 text-center">
+            <div class="row">
+              <div class="col-9 text-right"><h1 class="font-weight-bold">Overall score:</h1></div>
+              <div class="col-3 text-left"><h1 [ngClass]="{terrible: overall<=20, bad: overall>20 && overall<=40, ok: overall>40 && overall<=60, good: overall>60 && overall<=80, great: overall>80 && overall<=99, perfect: overall==100}">{{ overall }}</h1></div>
+            </div>
+            <div class="row">
+              <div class="col-9 text-right"><h2>Physical score: </h2></div>
+              <div class="col-3 text-left"><h2 [ngClass]="{terrible: physical<=20, bad: physical>20 && physical<=40, ok: physical>40 && physical<=60, good: physical>60 && physical<=80, great: physical>80 && physical<=99, perfect: physical==100}">{{ physical }}</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-9 text-right"><h2>Mental score:</h2></div>
+              <div class="col-3 text-left"><h2 [ngClass]="{terrible: mental<=20, bad: mental>20 && mental<=40, ok: mental>40 && mental<=60, good: mental>60 && mental<=80, great: mental>80 && mental<=99, perfect: mental==100}">{{ mental }}</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-9 text-right"><h2>Emotional score:</h2></div>
+              <div class="col-3 text-left"><h2 [ngClass]="{terrible: emotional<=20, bad: emotional>20 && emotional<=40, ok: emotional>40 && emotional<=60, good: emotional>60 && emotional<=80, great: emotional>80 && emotional<=99, perfect: emotional==100}">{{ emotional }}</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-9 text-right"><h2>Spiritual score:</h2></div>
+              <div class="col-3 text-left"><h2 [ngClass]="{terrible: spiritual<=20, bad: spiritual>20 && spiritual<=40, ok: spiritual>40 && spiritual<=60, good: spiritual>60 && spiritual<=80, great: spiritual>80 && spiritual<=99, perfect: spiritual==100}">{{ spiritual }}</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-9 text-right"><h2>Social score:</h2></div>
+              <div class="col-3 text-left"><h2 [ngClass]="{terrible: social<=20, bad: social>20 && social<=40, ok: social>40 && social<=60, good: social>60 && social<=80, great: social>80 && social<=99, perfect: social==100}">{{ social }}</h2></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 border-top border-right border-bottom rounded border-secondary">
+      <h1 class="text-center mt-4 text-underline"><u>{{ summary }}</u></h1>
+      <p class="mx-3" style="font-size: 1.5em">{{ message }}</p>
+    </div>
+  </div>
+  <div class="row border rounded border-secondary text-center" style="background-color: white">
+    <div class="col text-center text-justify">
+        <h3 class="mt-4">Suggested Activity</h3>
+        <h5>(Or pick a new type of activity!)</h5>
+          <div class="my-2 border rounded border-secondary" style="border:1px solid #333" *ngIf="activitiesAvailable">
+            <div class="container">
+                <div class="row">
+                  <div class="col-3"></div>
+                  <div class="col-6">
+                      <div class="pl-4 ml-4 text-left">
+                        <div class="ml-3 mt-3"><span class="font-weight-bold">Name: </span> {{ activity.name }}</div>
+                        <div class="ml-3"><span class="font-weight-bold">Value: </span> {{ activity.value }}</div>
+                        <div class="ml-3"><span class="font-weight-bold">Description: </span> {{ activity.description }}</div>
+                      </div>  
+                      <button class="btn action-btn m-2 btn-success complete" (click)="activityCompleted(activity)">Complete</button>
+                      <button class="btn action-btn m-2 btn-danger delete" (click)="activityDeleted(activity, false)">Delete</button>
+                  </div>
+                  <div class="col-3"></div>
+                </div>
+            </div>
+          </div>
+          <h2 class="my-2 p-4 border rounded border-secondary" *ngIf="!activitiesAvailable">
+            There are no activities left to complete!
+          </h2>
+        <button class="btn action-btn m-2 btn-primary btn-lg physical" (click)="newActivity('physical')" [disabled]="physicalBtn">Physical</button>
+        <button class="btn action-btn m-2 btn-primary btn-lg mental" (click)="newActivity('mental')" [disabled]="mentalBtn">Mental</button>
+        <button class="btn action-btn m-2 btn-primary btn-lg emotional" (click)="newActivity('emotional')" [disabled]="emotionalBtn">Emotional</button>
+        <button class="btn action-btn m-2 btn-primary btn-lg spiritual" (click)="newActivity('spiritual')" [disabled]="spiritualBtn">Spiritual</button>
+        <button class="btn action-btn m-2 btn-primary btn-lg social" (click)="newActivity('social')" [disabled]="socialBtn">Social</button>
+        <button class="btn action-btn m-2 btn-primary btn-lg random" (click)="newActivity('random')" [disabled]="randomBtn">Random</button>
+    </div>
+  </div>
+</div>

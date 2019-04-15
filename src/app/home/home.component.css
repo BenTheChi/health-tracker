@@ -1,0 +1,28 @@
+
+button {
+    border: 1px solid black;
+}
+
+.terrible{
+    color: #ff0000;
+}
+
+.bad{
+    color: #ff8300;
+}
+
+.ok{
+    color:#ffcc00;
+}
+
+.good{
+    color:#e5ff00;
+}
+
+.great{
+    color: #b2ff00;
+}
+
+.perfect{
+    color: #00ff00;
+}
