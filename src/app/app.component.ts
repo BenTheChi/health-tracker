@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'health-tracker';
 
-  constructor(private router: Router){
+  constructor(public router: Router){
 
   }
 }
